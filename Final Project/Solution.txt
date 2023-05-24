@@ -1,0 +1,23 @@
+The solution to the mazes are:
+191,1616,2480
+
+To find the solution I applied recursion: in each position of the maze we look for the next possible moves 
+(calling again the findPath function for each of them) and we try them all. 
+If we reach the end of the maze we save the solution,then we backtrack and try another paths to find the better one (Less Coins).
+If we reach a dead end we backtrack and try another path.
+
+To claculate the time complexity of the algorithm we take into account that the number of possible moves in each position is 4:
+up, down, left, right.
+So the time complexity is O(4^n) where n is the number of positions in the maze.
+This seems really bad but actually we need to know taht the real number of possible moves is less than 4,
+as we can't go back to the previous position. So the real time complexity is O(3^n), but just for the central numbers in the maze. 
+the side cells have less possible moves, 2 to be precise, and the corner cells can only have one (if the strating point is not one of them).
+So the real time complexity is O(3^n) for the central cells and O(2^n) for the side cells and O(n) for the corner cells (where n is the number of positions in the maze).
+The worst case scenario is when we have a maze with no walls and we can go everywhere. In this case hthe time complexity is O(n^3)
+for most of the cells (central cells).
+The best case scenario is when we have a maze with walls everywhere surrounding the best path to the end. 
+In this case the time complexity is O(n) (4n more specifically because we make 4 operations in each cell, even if its the corner).
+
+To calculate the space complexity we need to take into account that we need to save the path to the end of the maze.
+So the space complexity is O(n) where n is the number of positions in the maze.
+
